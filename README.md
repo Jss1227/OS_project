@@ -1,4 +1,4 @@
-# BasicOS Simulator
+# OS_project
 
 ## Team Members
 - [Your Name]
@@ -13,4 +13,5 @@ This is a basic operating system simulator written in C++. It includes:
 ## How to Run
 1. Clone the repository:
    ```sh
-   git clone https://github.com/YOUR_USERNAME/BasicOS-Simulator.git
+  git clone https://github.com/YOUR_USERNAME/OS_project.git
+
