@@ -1,0 +1,18 @@
+#include <iostream>
+#include "auth.h"
+
+void bootSystem() {
+    std::cout << "Booting up the BasicOS...\n";
+}
+
+int main() {
+    bootSystem();
+    
+    if (authenticateUser()) {
+        std::cout << "Access granted. Welcome to BasicOS!\n";
+    } else {
+        std::cout << "Access denied. Exiting...\n";
+    }
+
+    return 0;
+}
