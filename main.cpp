@@ -2,6 +2,7 @@
 #include <vector>
 #include "auth.h"
 #include "Process.h"
+#include "Scheduler.h"
 
 using namespace std;
 
@@ -11,33 +12,30 @@ void bootSystem() {
 
 int main() {
     bootSystem();
-    
+
     if (authenticateUser()) {
         cout << "Access granted. Welcome to BasicOS!\n";
-        
-        // Create a few sample processes
-        vector<Process> processes;
-        processes.emplace_back(1, 0, 5, 1, 1024, false);
-        processes.emplace_back(2, 2, 3, 2, 512, true);
 
-        // Display initial process states
-        cout << "\nInitial Process States:\n";
-        for (const auto& process : processes) {
-            process.displayProcess();
+        // Define a list of processes
+        vector<Process> processes = {
+            {1, 0, 5, 0, 0, 0, 0},
+            {2, 2, 3, 0, 0, 0, 0},
+            {3, 4, 7, 0, 0, 0, 0}
+        };
+
+        // Run FCFS Scheduling
+        cout << "\nRunning FCFS Scheduling...\n";
+        FCFS(processes);
+        for (const auto& p : processes) {
+            cout << "PID: " << p.pid << ", Turnaround Time: " << p.turnaround_time
+                 << ", Waiting Time: " << p.waiting_time << "\n";
         }
 
-        // Simulating process execution
-        processes[0].updateState("RUNNING");
-        processes[0].execute(2);
-
-        cout << "\nUpdated Process States:\n";
-        for (const auto& process : processes) {
-            process.displayProcess();
-        }
     } else {
         cout << "Access denied. Exiting...\n";
     }
 
     return 0;
 }
+
 
