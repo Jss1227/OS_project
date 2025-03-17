@@ -9,6 +9,7 @@ This is a basic operating system simulator written in C++. It includes:
 - **Boot sequence**: Displays a startup message.
 - **User authentication**: Requires a password before granting access.
 - **Process management**: Simulates the creation and execution of processes.
+- **Process Scheduling**: Implements First-Come, First-Served (FCFS) and Shortest Job First (SJF) algorithms.
 
 ## Process Class Explanation
 The `Process` class represents a simulated OS process with the following attributes:
@@ -30,10 +31,29 @@ The `Process` class represents a simulated OS process with the following attribu
 - **`execute()`**: Simulates execution, decreasing `remaining_time`. Terminates process when execution completes.
 - **`displayProcess()`**: Displays process information.
 
+## Process Scheduling Implementation
+This simulator supports two scheduling algorithms:
+
+- **First-Come, First-Served (FCFS)**: Processes are scheduled in the order they arrive.
+- **Shortest Job First (SJF)**: Selects the process with the shortest burst time.
+
+The scheduler calculates:
+- **Completion Time**
+- **Turnaround Time**
+- **Waiting Time**
+- **Average Turnaround and Waiting Times**
+
 ## How to Run
 Clone the repository:
 ```sh
 git clone https://github.com/Jss1227/OS_project.git
 ```
-
+Compile the project:
+```sh
+g++ -o simulator main.cpp auth.cpp Scheduler.cpp Process.cpp
+```
+Run the program:
+```sh
+./simulator
+```
 
