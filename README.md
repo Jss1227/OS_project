@@ -1,47 +1,77 @@
-# OS_project
+# BasicOS - Operating System Simulator
 
 ## Team Members
-Jorge Saenz
+- Jorge Saenz
 
 ## Project Overview
-This is a basic operating system simulator written in C++. It includes:
 
-- **Boot sequence**: Displays a startup message.
-- **User authentication**: Requires a password before granting access.
-- **Process management**: Simulates the creation and execution of processes.
-- **Process Scheduling**: Implements First-Come, First-Served (FCFS) and Shortest Job First (SJF) algorithms.
+**BasicOS** is a simplified operating system simulator developed in C++ that demonstrates core operating system concepts. This project includes:
 
-## Process Class Explanation
-The `Process` class represents a simulated OS process with the following attributes:
+- Boot sequence simulation
+- User authentication
+- Process creation and scheduling (FCFS & SJF)
+- Virtual memory management with page tables and address translation
 
-- `pid`: Unique process ID.
-- `arrival_time`: The time when the process enters the system.
-- `burst_time`: Total CPU execution time required.
-- `priority`: Process priority (if applicable).
-- `state`: The current state of the process (e.g., NEW, READY, RUNNING, TERMINATED).
-- `remaining_time`: The CPU time left for execution.
-- `waiting_time`: Total time the process spends waiting in the ready queue.
-- `turnaround_time`: The total time from arrival to completion.
-- `memory_required`: The amount of memory required by the process.
-- `io_operations`: Boolean flag indicating if the process performs I/O operations.
+---
 
-### Implemented Methods
-- **`Process()`**: Initializes the process with given parameters.
-- **`updateState()`**: Changes the process state.
-- **`execute()`**: Simulates execution, decreasing `remaining_time`. Terminates process when execution completes.
-- **`displayProcess()`**: Displays process information.
+## Features
 
-## Process Scheduling Implementation
-This simulator supports two scheduling algorithms:
+### 🔧 Boot Sequence
+Simulates a basic boot-up process to initialize the OS environment.
 
-- **First-Come, First-Served (FCFS)**: Processes are scheduled in the order they arrive.
-- **Shortest Job First (SJF)**: Selects the process with the shortest burst time.
+### 🔐 User Authentication
+- Secure login using hardcoded credentials.
+- Prompts the user for a username and password.
+- Access is only granted if both match the predefined values.
+  - **Username**: `admin`
+  - **Password**: `password123`
 
-The scheduler calculates:
-- **Completion Time**
-- **Turnaround Time**
-- **Waiting Time**
-- **Average Turnaround and Waiting Times**
+### 👨‍💻 Process Management
+- Creates processes with attributes:
+  - Process ID (PID)
+  - Arrival Time
+  - Burst Time
+  - Priority
+  - Memory Requirement
+  - I/O Operation Flag
+- Tracks each process state:
+  - NEW → READY → RUNNING → WAITING → TERMINATED
+
+### 🧮 Scheduling Algorithms
+Supports basic CPU scheduling:
+
+#### ✅ FCFS (First-Come, First-Served)
+- Non-preemptive algorithm
+- Executes processes in order of arrival
+
+#### 🔜 SJF (Shortest Job First)
+- Implementation in progress
+- Will support both preemptive and non-preemptive modes
+
+#### Metrics Calculated:
+- Completion Time
+- Turnaround Time
+- Waiting Time
+- Average Turnaround & Waiting Times
+
+### 💾 Virtual Memory Management
+Implements a basic simulation of virtual memory:
+
+- **Virtual Address Translation**
+  - Uses a fixed page size (e.g., 4KB)
+  - Simulates mapping from virtual addresses to physical frames
+
+- **Page Tables**
+  - Each process maintains its own page table
+  - Includes:
+    - Frame Number
+    - Valid Bit
+    - Dirty Bit (optional)
+
+- **Configurable Memory**
+  - Define virtual and physical memory sizes at initialization
+
+---
 
 ## How to Run
 Clone the repository:
@@ -50,7 +80,7 @@ git clone https://github.com/Jss1227/OS_project.git
 ```
 Compile the project:
 ```sh
-g++ -o simulator main.cpp auth.cpp Scheduler.cpp Process.cpp
+g++ main.cpp auth.cpp Process.cpp Scheduler.cpp VirtualMemory.cpp -o BasicOS
 ```
 Run the program:
 ```sh
