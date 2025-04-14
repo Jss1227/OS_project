@@ -86,7 +86,8 @@ Run the program:
 ```sh
 ./BasicOS
 ```
-#Sample Output
+#3Sample Output
+
 Booting up the BasicOS...
 Enter username: admin
 Enter password: password123
