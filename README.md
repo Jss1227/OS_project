@@ -86,4 +86,14 @@ Run the program:
 ```sh
 ./BasicOS
 ```
+#Sample Output
+Booting up the BasicOS...
+Enter username: admin
+Enter password: password123
+Access granted. Welcome to BasicOS!
+
+Running FCFS Scheduling...
+PID: 1, Turnaround Time: 5, Waiting Time: 0
+PID: 2, Turnaround Time: 6, Waiting Time: 3
+PID: 3, Turnaround Time: 8, Waiting Time: 5
 
