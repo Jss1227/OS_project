@@ -16,19 +16,26 @@ int main() {
     if (authenticateUser()) {
         cout << "Access granted. Welcome to BasicOS!\n";
 
-        // Define a list of processes
-        vector<Process> processes = {
-            {1, 0, 5, 0, 0, 0, 0},
-            {2, 2, 3, 0, 0, 0, 0},
-            {3, 4, 7, 0, 0, 0, 0}
-        };
+        // Create process list
+        vector<Process> processes;
+        processes.emplace_back(1, 0, 5, 1, 16, false);
+        processes.emplace_back(2, 2, 3, 2, 12, true);
+        processes.emplace_back(3, 4, 7, 1, 20, false);
 
-        // Run FCFS Scheduling
+        // Initialize virtual memory (e.g., assume 4KB pages, memory in KB)
+        int pageSize = 4; // KB
+        for (auto& proc : processes) {
+            int numPages = (proc.getMemoryRequired() + pageSize - 1) / pageSize;
+            proc.initPageTable(numPages);
+        }
+
+        // Run FCFS scheduling
         cout << "\nRunning FCFS Scheduling...\n";
         FCFS(processes);
+
+        // Display results
         for (const auto& p : processes) {
-            cout << "PID: " << p.pid << ", Turnaround Time: " << p.turnaround_time
-                 << ", Waiting Time: " << p.waiting_time << "\n";
+            p.displayProcess(); // Make sure this prints turnaround & waiting time
         }
 
     } else {
@@ -37,5 +44,6 @@ int main() {
 
     return 0;
 }
+
 
 
