@@ -86,7 +86,7 @@ Run the program:
 ```sh
 ./BasicOS
 ```
-#3Sample Output
+##Sample Output
 
 Booting up the BasicOS...
 Enter username: admin
