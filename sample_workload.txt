@@ -1,0 +1,5 @@
+# Format: PID Arrival Burst Priority Mem IO
+
+1 0 5 1 1024 0
+2 2 3 2 2048 1
+3 4 7 1 1024 0
