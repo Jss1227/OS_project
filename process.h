@@ -38,7 +38,15 @@ public:
     // Initializes the page table with invalid entries
     void initPageTable(int numPages);
 
-    // Optional: add more memory-related methods if needed later
+    int getPID() const { return pid; }
+    int getTurnaroundTime() const { return turnaround_time; }
+    int getWaitingTime() const { return waiting_time; }
+    int getMemoryRequired() const { return memory_required; }
+
+    // Virtual memory - initialize page table
+    void initPageTable(int numPages);
+
+    
 };
 
 #endif
