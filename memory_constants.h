@@ -1,0 +1,11 @@
+#ifndef MEMORY_CONSTANTS_H
+#define MEMORY_CONSTANTS_H
+
+const int PAGE_SIZE = 4096;               // 4KB
+const int VIRTUAL_MEMORY_SIZE = 65536;    // 64KB
+const int PHYSICAL_MEMORY_SIZE = 32768;   // 32KB
+
+const int NUM_PAGES = VIRTUAL_MEMORY_SIZE / PAGE_SIZE;
+const int NUM_FRAMES = PHYSICAL_MEMORY_SIZE / PAGE_SIZE;
+
+#endif
