@@ -84,6 +84,6 @@ g++ main.cpp auth.cpp Process.cpp Scheduler.cpp VirtualMemory.cpp -o BasicOS
 ```
 Run the program:
 ```sh
-./simulator
+./BasicOS
 ```
 
